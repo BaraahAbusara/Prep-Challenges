@@ -16,11 +16,12 @@
 // -------------
 
 function square(arr) {
-    let ans=[];
+    //let ans=[];
     let helpArr = arr.map(item=>{
-        ans.push(item*item); 
+        item=(item*item); 
+        return item ; 
     })
-    return ans ;
+    return helpArr ;
 }
 
 // 2) ------------------
@@ -59,11 +60,12 @@ function square(arr) {
 //
 
 function fullName(arr) {
-    let ans=[];
+    
     let helpArr=arr.map(item=>{
-        ans.push(`${item.firstName} ${item.lastName}`); 
+        item =(`${item.firstName} ${item.lastName}`); 
+        return item; 
     })
-    return ans ; 
+    return helpArr ; 
 }
 
 // 3) ---------------------
@@ -126,16 +128,17 @@ function fullName(arr) {
 
 function gradesAvg(arr) {
     arr["avg"]=0; 
-    let ans =[]; 
+    
     let helpingArr=arr.map(item=>{
         let sum =0; 
         let helpArr=item.gradsList.map(mark=>{
             sum+=mark; 
+            return sum ; 
         })
-        ans.push(item); 
         item.avg=(sum/item.gradsList.length); 
+        return item ; 
     })
-    return ans;  // returns undefined data ?!
+    return helpingArr;  // returns undefined data ?!
 }
 
 
@@ -206,7 +209,7 @@ function gradesAvg(arr) {
 // -------------
 
 function studentsResult(arr) {
-    let ans =[]; 
+    
     arr["result"]=""; 
 
     let helpingArr=arr.map(item=>{
@@ -215,8 +218,9 @@ function studentsResult(arr) {
         item.result='Passed'; 
         else
         item.result='Failed'; 
-        ans.push(item);
+        return item ;
+        
     })
-    return ans ;
+    return helpingArr ;
 }
 module.exports = { square, fullName, gradesAvg, studentsResult };
