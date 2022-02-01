@@ -87,7 +87,6 @@ const cvsFiltration = (arr) => {
 
 
     });
-    // map over them and save in another array 
 
     return ansArr; 
 }
