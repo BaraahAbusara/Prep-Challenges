@@ -72,10 +72,20 @@ const filterLinks = (str) => {
 const isPalindrome = (str) => {
 
     let lowerArr = str.toLowerCase();
-    let readyArr = lowerArr.match(/[a-z]/g);
+    let readyArr; 
+    let regex=/[a-z]/g ;
+    if(regex.test(lowerArr))
+    {
+         readyArr = lowerArr.match(regex);
+    }
+    else
+    return (true); 
+    console.log(readyArr);
+    readyArr=readyArr.join(''); 
+
     let j = readyArr.length-1;
-    console.log(readyArr.length);
-    for (let i = 0; i <((readyArr.length)/2); i++) {
+    
+    for (let i = 0; i <j ; i++) {
         if (readyArr[i] != readyArr[j])
             return false;
         j--;
@@ -103,9 +113,55 @@ const isPalindrome = (str) => {
 //
 //  here if the pattern had three different things so the array should had 3 different things to be true
 //
+function charIdx(char)
+{
+    return parseInt(char, 36) - 9;
+    
+}
+function setMapArr(){
+  let mapArr=[]; 
+    for(let i=1;i<=30;i++)
+    mapArr[i]=""; 
+
+  return mapArr ;
+}
+function setFrqArr(arr){
+  let frqArr=[]; 
+    for(let i=0;i<arr.length;i++)
+    frqArr[charIdx(arr[i])]=0; 
+
+  return frqArr ; 
+
+}
 
 const samePattern = (str, arr) => {
-    // write your code here
+let mapArr=setMapArr();  
+let frqArr =setFrqArr(arr);
+
+
+    for(let i=0; i<str.length;i++)
+    {
+
+        if(mapArr[charIdx(str[i])]=="")
+        {
+            if(frqArr[charIdx(arr[i])])
+            {
+              return false;
+            }
+            else
+            {
+            mapArr[charIdx(str[i])]=arr[i]; 
+            frqArr[charIdx(arr[i])]++;
+            }
+        }
+        else
+        {
+            frqArr[charIdx(arr[i])]++;
+            if( mapArr[charIdx(str[i])] != arr[i])
+            return false; 
+        }
+    }
+    return true ; 
 }
 // -------------------------------------------------------------------------------------------------------
 
