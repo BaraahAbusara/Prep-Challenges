@@ -72,20 +72,19 @@ const filterLinks = (str) => {
 const isPalindrome = (str) => {
 
     let lowerArr = str.toLowerCase();
-    let readyArr; 
-    let regex=/[a-z]/g ;
-    if(regex.test(lowerArr))
-    {
-         readyArr = lowerArr.match(regex);
+    let readyArr;
+    let regex = /[a-z]/g;
+    if (regex.test(lowerArr)) {
+        readyArr = lowerArr.match(regex);
     }
     else
-    return (true); 
+        return (true);
     console.log(readyArr);
-    readyArr=readyArr.join(''); 
+    readyArr = readyArr.join('');
 
-    let j = readyArr.length-1;
-    
-    for (let i = 0; i <j ; i++) {
+    let j = readyArr.length - 1;
+
+    for (let i = 0; i < j; i++) {
         if (readyArr[i] != readyArr[j])
             return false;
         j--;
@@ -113,55 +112,49 @@ const isPalindrome = (str) => {
 //
 //  here if the pattern had three different things so the array should had 3 different things to be true
 //
-function charIdx(char)
-{
+function charIdx(char) {
     return parseInt(char, 36) - 9;
-    
-}
-function setMapArr(){
-  let mapArr=[]; 
-    for(let i=1;i<=30;i++)
-    mapArr[i]=""; 
 
-  return mapArr ;
 }
-function setFrqArr(arr){
-  let frqArr=[]; 
-    for(let i=0;i<arr.length;i++)
-    frqArr[charIdx(arr[i])]=0; 
+function setMapArr() {
+    let mapArr = [];
+    for (let i = 1; i <= 30; i++)
+        mapArr[i] = "";
 
-  return frqArr ; 
+    return mapArr;
+}
+function setFrqArr(arr) {
+    let frqArr = [];
+    for (let i = 0; i < arr.length; i++)
+        frqArr[charIdx(arr[i])] = 0;
+
+    return frqArr;
 
 }
 
 const samePattern = (str, arr) => {
-let mapArr=setMapArr();  
-let frqArr =setFrqArr(arr);
+    let mapArr = setMapArr();
+    let frqArr = setFrqArr(arr);
 
 
-    for(let i=0; i<str.length;i++)
-    {
+    for (let i = 0; i < str.length; i++) {
 
-        if(mapArr[charIdx(str[i])]=="")
-        {
-            if(frqArr[charIdx(arr[i])])
-            {
-              return false;
+        if (mapArr[charIdx(str[i])] == "") {
+            if (frqArr[charIdx(arr[i])]) {
+                return false;
             }
-            else
-            {
-            mapArr[charIdx(str[i])]=arr[i]; 
-            frqArr[charIdx(arr[i])]++;
+            else {
+                mapArr[charIdx(str[i])] = arr[i];
+                frqArr[charIdx(arr[i])]++;
             }
         }
-        else
-        {
+        else {
             frqArr[charIdx(arr[i])]++;
-            if( mapArr[charIdx(str[i])] != arr[i])
-            return false; 
+            if (mapArr[charIdx(str[i])] != arr[i])
+                return false;
         }
     }
-    return true ; 
+    return true;
 }
 // -------------------------------------------------------------------------------------------------------
 
